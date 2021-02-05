@@ -951,6 +951,7 @@ export default class Collection<S extends EntityModel = EntityModel, T extends C
     destroy(): void {
         this._deinitializeCollection();
         this._unbindHandlers();
+        this.getItems().forEach(item => item.destroy());
         this._composer = null;
         this._filterMap = [];
         this._sortMap = [];
