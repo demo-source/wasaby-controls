@@ -321,7 +321,7 @@ define(
             });
          });
 
-         describe('_itemClick', function() {
+         describe('_itemMouseDown', function() {
             let menuControl;
             let selectedItem, selectedKeys, pinItem, item;
 
@@ -348,7 +348,7 @@ define(
             });
             it('check selected item', function() {
                menuControl._markerController = null;
-               menuControl._itemClick('itemClick', item, {});
+               menuControl._itemMouseDown('itemMouseDown', item, {});
                assert.equal(selectedItem.getKey(), 1);
                assert.isNull(menuControl._markerController);
             });
@@ -356,11 +356,11 @@ define(
             it('multiSelect=true', function() {
                menuControl._options.multiSelect = true;
 
-               menuControl._itemClick('itemClick', item, {});
+               menuControl._itemMouseDown('itemMouseDown', item, {});
                assert.equal(selectedItem.getKey(), 1);
 
                menuControl._selectionChanged = true;
-               menuControl._itemClick('itemClick', item, {});
+               menuControl._itemMouseDown('itemMouseDown', item, {});
                assert.equal(selectedKeys[0], 1);
             });
 
@@ -369,11 +369,11 @@ define(
                item = item.clone();
                item.set('pinned', true);
 
-               menuControl._itemClick('itemClick', item, {});
+               menuControl._itemMouseDown('itemMouseDown', item, {});
                assert.equal(selectedItem.getKey(), 1);
 
                menuControl._selectionChanged = true;
-               menuControl._itemClick('itemClick', item, {});
+               menuControl._itemMouseDown('itemMouseDown', item, {});
                assert.equal(selectedItem.getKey(), 1);
             });
 
@@ -383,11 +383,11 @@ define(
                item.set('pinned', true);
                item.set('HistoryId', null);
 
-               menuControl._itemClick('itemClick', item, {});
+               menuControl._itemMouseDown('itemMouseDown', item, {});
                assert.equal(selectedItem.getKey(), 1);
 
                menuControl._selectionChanged = true;
-               menuControl._itemClick('itemClick', item, {});
+               menuControl._itemMouseDown('itemMouseDown', item, {});
                assert.equal(selectedKeys[0], 1);
             });
 
@@ -396,11 +396,11 @@ define(
                let nativeEvent = {
                   target: { closest: () => isPinClick }
                };
-               menuControl._itemClick('itemClick', item, nativeEvent);
+               menuControl._itemMouseDown('itemMouseDown', item, nativeEvent);
                assert.isUndefined(pinItem);
 
                isPinClick = true;
-               menuControl._itemClick('itemClick', item, nativeEvent);
+               menuControl._itemMouseDown('itemMouseDown', item, nativeEvent);
                assert.equal(pinItem.getId(), item.getId());
             });
 
@@ -419,13 +419,13 @@ define(
                };
 
                emptyMenuControl._selectionChanged = true;
-               emptyMenuControl._itemClick('itemClick', item, {});
+               emptyMenuControl._itemMouseDown('itemMouseDown', item, {});
                assert.equal(selectedKeys[0], 1);
 
-               emptyMenuControl._itemClick('itemClick', item, {});
+               emptyMenuControl._itemMouseDown('itemMouseDown', item, {});
                assert.equal(selectedKeys[0], null);
 
-               emptyMenuControl._itemClick('itemClick', item, {});
+               emptyMenuControl._itemMouseDown('itemMouseDown', item, {});
                assert.equal(selectedKeys[0], 1);
             });
 
@@ -437,7 +437,7 @@ define(
 
                it('submenu is not open, item is list', function() {
                   sinon.stub(menuControl, '_handleCurrentItem');
-                  menuControl._itemClick('itemClick', item, {});
+                  menuControl._itemMouseDown('itemMouseDown', item, {});
                   assert.equal(selectedItem.getKey(), 1);
                });
 
@@ -445,7 +445,7 @@ define(
                   sinon.stub(menuControl, '_handleCurrentItem');
                   item.set('node', true);
                   menuControl._options.nodeProperty = 'node';
-                  menuControl._itemClick('itemClick', item, {});
+                  menuControl._itemMouseDown('itemMouseDown', item, {});
                   sinon.assert.calledOnce(menuControl._handleCurrentItem);
                   assert.isNull(selectedItem);
                   sinon.restore();
@@ -453,7 +453,7 @@ define(
 
                it('submenu is open', function() {
                   menuControl._subDropdownItem = menuControl._listModel.at(1);
-                  menuControl._itemClick('itemClick', menuControl._listModel.at(1).getContents(), {});
+                  menuControl._itemMouseDown('itemMouseDown', menuControl._listModel.at(1).getContents(), {});
                   assert.equal(selectedItem.getKey(), 1);
                });
             });

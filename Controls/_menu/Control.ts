@@ -241,9 +241,9 @@ export default class MenuControl extends Control<IMenuControlOptions> implements
         }
     }
 
-    protected _itemClick(event: SyntheticEvent<MouseEvent>,
-                         item: Model,
-                         sourceEvent: SyntheticEvent<MouseEvent>): void {
+    protected _itemMouseDown(event: SyntheticEvent<MouseEvent>,
+                             item: Model,
+                             sourceEvent: SyntheticEvent<MouseEvent>): void {
         if (item.get('readOnly')) {
             return;
         }
@@ -357,7 +357,7 @@ export default class MenuControl extends Control<IMenuControlOptions> implements
         return this._context?.isTouch?.isTouch;
     }
 
-    protected _checkBoxClick(event: SyntheticEvent<MouseEvent>): void {
+    protected _checkBoxClick(): void {
         this._selectionChanged = true;
     }
 
