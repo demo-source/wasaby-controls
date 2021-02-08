@@ -49,6 +49,8 @@ export default class FooterCell<T> extends Cell<T, FooterRow<T>> {
             wrapperClasses += ` controls-GridView__footer__itemActionsV_outside_theme-${theme}`;
         }
 
+        wrapperClasses += this._getHorizontalPaddingClasses(theme);
+
         return wrapperClasses;
     }
 
@@ -57,8 +59,7 @@ export default class FooterCell<T> extends Cell<T, FooterRow<T>> {
     }
 
     getContentClasses(theme: string): string {
-        return 'controls-Grid__footer-cell__content '
-            + this._getContentHorizontalPaddingClasses(theme);
+        return 'controls-Grid__footer-cell__content';
     }
 
     getTemplate(): TemplateFunction|string {

@@ -243,8 +243,8 @@ export default class Cell<T, TOwner extends Row<T>> extends mixin<
         contentClasses += ` controls-Grid__row-cell__content_baseline_default_theme-${theme}`;
         contentClasses += ` controls-Grid__row-cell_cursor-${cursor}`;
 
-        contentClasses += this._getContentHorizontalPaddingClasses(theme);
-        contentClasses += this._getContentVerticalPaddingClasses(theme);
+        contentClasses += this._getHorizontalPaddingClasses(theme);
+        contentClasses += this._getVerticalPaddingClasses(theme);
 
         contentClasses += ' controls-Grid__row-cell_withoutRowSeparator_size-null_theme-default';
 
@@ -366,7 +366,7 @@ export default class Cell<T, TOwner extends Row<T>> extends mixin<
         return COLUMN_SCROLL_JS_SELECTORS.SCROLLABLE_ELEMENT;
     }
 
-    protected _getContentHorizontalPaddingClasses(theme: string): string {
+    protected _getHorizontalPaddingClasses(theme: string): string {
         let classes = '';
 
         const leftPadding = this._$owner.getLeftPadding();
@@ -399,7 +399,7 @@ export default class Cell<T, TOwner extends Row<T>> extends mixin<
         return classes;
     }
 
-    protected _getContentVerticalPaddingClasses(theme: string): string {
+    protected _getVerticalPaddingClasses(theme: string): string {
         let classes = '';
 
         const topPadding = this._$owner.getTopPadding();
