@@ -35,28 +35,10 @@ export default class FooterCell<T> extends Cell<T, FooterRow<T>> {
 
     getWrapperClasses(theme: string, backgroundColorStyle: string, style: string = 'default', templateHighlightOnHover: boolean): string {
         let wrapperClasses = 'controls-GridView__footer__cell'
-                          + ` controls-GridView__footer__cell_theme-${theme}`
-                          + ` controls-background-${backgroundColorStyle}_theme-${theme}`;
+                          + ` controls-GridView__footer__cell_theme-${theme}`;
 
-        const cellPadding = this._$column.cellPadding;
-        if (!this.getOwner().hasMultiSelectColumn() && this.isFirstColumn()) {
-            wrapperClasses += ` controls-GridView__footer__cell__paddingLeft_${this._$owner.getLeftPadding()}_theme-${theme}`;
-        } else {
-            wrapperClasses += ' controls-Grid__cell_spacingLeft';
-            if (cellPadding?.left) {
-                wrapperClasses += `_${cellPadding.left.toLowerCase()}`;
-            }
-            wrapperClasses += `_theme-${theme}`;
-        }
-
-        if (this.isLastColumn()) {
-            wrapperClasses += ` controls-GridView__footer__cell__paddingRight_${this._$owner.getRightPadding()}_theme-${theme}`;
-        } else {
-            wrapperClasses += ' controls-Grid__cell_spacingRight';
-            if (cellPadding?.left) {
-                wrapperClasses += `_${cellPadding.left.toLowerCase()}`;
-            }
-            wrapperClasses += `_theme-${theme}`;
+        if (backgroundColorStyle) {
+            wrapperClasses += ` controls-background-${backgroundColorStyle}_theme-${theme}`;
         }
 
         if (this._$owner.hasColumnScroll()) {
@@ -75,7 +57,8 @@ export default class FooterCell<T> extends Cell<T, FooterRow<T>> {
     }
 
     getContentClasses(theme: string): string {
-        return 'controls-Grid__footer-cell__content';
+        return 'controls-Grid__footer-cell__content ' +
+            this._getContentPaddingClasses(theme);
     }
 
     getTemplate(): TemplateFunction|string {

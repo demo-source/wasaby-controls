@@ -90,6 +90,7 @@ export default class FooterRow<T> extends Row<T> {
             if (this._$owner.hasMultiSelectColumn()) {
                 this._$columnItems.unshift(factory({
                     column: {},
+                    colspan: 0,
                     isFixed: true
                 }));
             }
