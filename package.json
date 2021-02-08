@@ -25,8 +25,7 @@
       "test:coverage": "wasaby-cli --tasks=startTest --node --coverage",
       "lint": "node ./node_modules/eslint/bin/eslint --color --no-eslintrc -c=.eslintrc -f=stylish .",
       "lintless": "stylelint \"Controls/**/*.less\"",
-      "update-cli-store": "wasaby-cli --tasks=initStore",
-      "prepare": "npm run update-cli-store && npm run build:typescript"
+      "update-cli-store": "wasaby-cli --tasks=initStore"
    },
    "wasaby-cli": {
       "port": 777
@@ -39,6 +38,8 @@
       "stylelint": "^9.7.1",
       "stylelint-config-standard": "^18.2.0",
       "tslint": "^5.18.0",
-      "wasaby-cli": "git+https://platform-git.sbis.ru/saby/wasaby-cli.git#rc-21.2000"
+      "typescript": "latest",
+      "@typescript-eslint/parser": "latest",
+      "@typescript-eslint/eslint-plugin": "latest"
    }
 }
