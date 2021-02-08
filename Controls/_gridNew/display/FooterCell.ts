@@ -57,8 +57,8 @@ export default class FooterCell<T> extends Cell<T, FooterRow<T>> {
     }
 
     getContentClasses(theme: string): string {
-        return 'controls-Grid__footer-cell__content ' +
-            this._getContentPaddingClasses(theme);
+        return 'controls-Grid__footer-cell__content '
+            + this._getContentHorizontalPaddingClasses(theme);
     }
 
     getTemplate(): TemplateFunction|string {

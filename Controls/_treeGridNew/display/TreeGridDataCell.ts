@@ -55,8 +55,8 @@ export default class TreeGridDataCell<T extends Model> extends GridDataCell<T, T
         return classes;
     }
 
-    protected _getContentPaddingClasses(theme: string): string {
-        let classes = super._getContentPaddingClasses(theme);
+    protected _getContentHorizontalPaddingClasses(theme: string): string {
+        let classes = super._getContentHorizontalPaddingClasses(theme);
 
         // если текущая колонка первая и для нее не задан мультиселект, то убираем левый отступ
         const hasMultiSelect = this._$owner.hasMultiSelectColumn();
